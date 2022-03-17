@@ -1,126 +1,25 @@
 public inherited sharing class Animal {
 
-    global String animalType;
+	public String animalType;
 
-    public Animal(String animalType) {
-        this.animalType = animalType;
-    }
+	public Animal(String animalType) {
+		this.animalType = animalType;
+	}
 
-    public void makeNoise() {
-        if (animalType == 'Lion') {
-            roar();
-        }
-        else if (animalType == 'Cat') {
-            meow();
-        }
-        else if (animalType == 'Horse') {
-            neigh();
-        }
-        else if (animalType == 'Alligator') {
-            hiss();
-        }
-        else if (animalType == 'Bear') {
-            growl();
-        }
-        else if (animalType == 'Cow') {
-            moo();
-        }
-        else if (animalType == 'Dog') {
-            bark();
-        }
-    }
+	public static Animal newInstance(String animalType) {
+		//Using assertions instead of exceptions only for this exam.
+		System.assertNotEquals(null, animalType, 'The animal type can not be null');
+		Type classType = Type.forName(animalType);
+		System.assertNotEquals(null, classType, 'The animal type ' + animalType + ' has not been implemented yet');
+		System.assert(Animal.class.isAssignableFrom(classType), 'Class type is not an animal');
+		Animal animal = (Animal)classType.newInstance();
+		animal.animalType = animalType;
+		return animal;
+	}
 
-    public void move() {
-        if (animalType == 'Lion') {
-            run();
-        }
-        else if (animalType == 'Cat') {
-            walk();
-        }
-        else if (animalType == 'Horse') {
-            slide();
-        }
-        else if (animalType == 'Alligator') {
-            hiss();
-        }
-        else if (animalType == 'Bear') {
-            walk();
-        }
-        else if (animalType == 'Cow') {
-            walk();
-        }
-        else if (animalType == 'Dog') {
-            run();
-        }
-    }
+	public abstract void makeNoise();
 
-    public void swim() {
-        if (animalType == 'Lion') {
-            doSwim();
-        }
-        else if (animalType == 'Cat') {
-            // ignore, cannot swim
-        }
-        else if (animalType == 'Horse') {
-            // ignore, cannot swim
-        }
-        else if (animalType == 'Alligator') {
-            doSwim();
-        }
-        else if (animalType == 'Bear') {
-            doSwim();
-        }
-        else if (animalType == 'Cow') {
-            // ignore, cannot swim
-        }
-        else if (animalType == 'Dog') {
-            doSwim();
-        }
-    }
+	public abstract void move();
 
-    public void roar() {
-        // roaring behavior here
-    }
-
-    public void meow() {
-        // meowing behavior here
-    }
-
-    public void neigh() {
-        // neighing behavior here
-    }
-
-    public void hiss() {
-        // hissing behavior here
-    }
-
-    public void growl() {
-        // growling behavior here
-    }
-
-    public void moo() {
-        // mooing behavior here
-    }
-
-    public void bark() {
-        // barking behavior here
-    }
-
-    public void run() {
-        // running behavior here
-    }
-
-    public void walk() {
-        // walking behavior here
-    }
-
-    public void slide() {
-        // sliding behavior here
-    }
-
-    public void doSwim() {
-        // swimming behavior here
-    }
-
-
+	public abstract void swim();
 }
