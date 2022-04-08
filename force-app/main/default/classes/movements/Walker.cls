@@ -1,10 +1,6 @@
-public with sharing class Walker extends Swimmer {
+public abstract class Walker extends Swimmer {
 
-	public Walker() {
-
-	}
-
-	public void move() {
+	public override void move() {
 		walk();
 	}
 

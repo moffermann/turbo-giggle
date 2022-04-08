@@ -1,10 +1,6 @@
 public with sharing class Dog extends Runner {
 
-	public Dog() {
-
-	}
-
-	public void makeNoise() {
+	public override void makeNoise() {
 		bark();
 	}
 

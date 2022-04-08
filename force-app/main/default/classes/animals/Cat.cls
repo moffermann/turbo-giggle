@@ -1,14 +1,10 @@
 public with sharing class Cat extends Walker {
 
-	public Cat() {
-
-	}
-
-	public void makeNoise() {
+	public override void makeNoise() {
 		meow();
 	}
 
-	public void swim() {
+	public override void swim() {
 		// ignore, cannot swim
 	}
 

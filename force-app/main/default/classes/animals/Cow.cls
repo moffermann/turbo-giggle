@@ -1,13 +1,10 @@
 public with sharing class Cow extends Walker {
-    public Cow() {
 
-    }
-
-	public void makeNoise() {
+	public override void makeNoise() {
 		moo();
 	}
 
-	public void swim() {
+	public override void swim() {
 		// ignore, cannot swim
 	}
 

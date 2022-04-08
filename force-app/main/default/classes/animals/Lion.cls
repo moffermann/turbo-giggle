@@ -1,10 +1,6 @@
 public with sharing class Lion extends Runner {
 
-	public Lion() {
-
-	}
-
-	public void makeNoise() {
+	public override void makeNoise() {
 		roar();
 	}
 

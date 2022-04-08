@@ -1,10 +1,6 @@
 public with sharing class Bear extends Walker {
 
-	public Bear() {
-
-	}
-
-	public void makeNoise() {
+	public override void makeNoise() {
 		growl();
 	}
 

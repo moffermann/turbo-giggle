@@ -1,18 +1,14 @@
 public with sharing class Horse extends Animal {
 
-	public Horse() {
-
-	}
-
-	public void makeNoise() {
+	public override void makeNoise() {
 		neigh();
 	}
 
-	public void move() {
+	public override void move() {
 		slide();
 	}
 
-	public void swim() {
+	public override void swim() {
 		// ignore, cannot swim
 	}
 

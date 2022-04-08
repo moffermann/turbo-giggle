@@ -1,14 +1,10 @@
-public with sharing class Alligator extends Swinner {
+public with sharing class Alligator extends Swimmer {
 
-	public Alligator() {
-
-	}
-
-	public void makeNoise() {
+	public override void makeNoise() {
 		hiss();
 	}
 
-	public void move() {
+	public override void move() {
 		hiss();
 	}
 
