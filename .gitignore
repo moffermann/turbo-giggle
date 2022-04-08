@@ -37,4 +37,5 @@ ehthumbs.db
 $RECYCLE.BIN/
 
 # Local environment variables
-.env
+.env.history
+.history/
