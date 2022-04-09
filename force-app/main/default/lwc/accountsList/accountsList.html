@@ -1,0 +1,18 @@
+<template>
+	<lightning-card title="Account List" icon-name="standard:account">
+		<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+			<thead>
+				<th scope="col">Account Name</th>
+			</thead>
+			<tbody>
+				<template for:each={accounts.data} for:item="account" for:index="index">
+					<tr class="slds-hint-parent" key={account.Id}>
+						<td data-label="Account Name">
+							<a href="#" data-account-id={account.Id} data-index={index} onclick={fetchContacts}>{account.Name}</a>
+						</td>
+					</tr>
+				</template>
+			</tbody>
+		</table>
+	</lightning-card>
+</template>
