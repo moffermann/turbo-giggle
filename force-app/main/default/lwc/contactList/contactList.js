@@ -1,15 +1,7 @@
 import { LightningElement, wire, api } from 'lwc';
 import getContacts from '@salesforce/apex/ContactController.getContacts';
-
-import {
-    subscribe,
-    unsubscribe,
-    APPLICATION_SCOPE,
-    MessageContext
-} from 'lightning/messageService';
-//import accountsMessageChannel from '@salesforce/messageChannel/accountsMessageChannel';
+import { subscribe, APPLICATION_SCOPE, MessageContext } from 'lightning/messageService';
 import ACCOUNT_SELECTED_CHANNEL from '@salesforce/messageChannel/Account_Selected__c';
-
 export default class ContactList extends LightningElement {
 
 	@api selectedAccount = {Id: '', Name: ''};
