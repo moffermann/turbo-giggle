@@ -1,3 +1,23 @@
 <template>
-	Contact Component
+	<lightning-card variant="Narrow" icon-name="standard:contact">
+		<h1 slot="title">Contact list of {selectedAccount.Name}</h1>
+		<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+			<thead>
+				<th scope="col">Contact Name</th>
+				<th scope="col">Title</th>
+				<th scope="col">Phone</th>
+				<th scope="col">Email</th>
+			</thead>
+			<tbody>
+				<template for:each={contacts.data} for:item="contact">
+					<tr class="slds-hint-parent" key={contact.Id}>
+						<td data-label="Contact Name">{contact.Name}</td>
+						<td data-label="Contact Name">{contact.Title}</td>
+						<td data-label="Contact Name">{contact.Phone}</td>
+						<td data-label="Contact Name">{contact.Email}</td>
+					</tr>
+				</template>
+			</tbody>
+		</table>
+	</lightning-card>
 </template>
