@@ -1,0 +1,5 @@
+[
+	{"Id": "1", "Name": "Apple", "Website": "www.apple.com", "Phone": "+56993154634"},
+	{"Id": "2", "Name": "Microsoft", "Website": "www.microsoft.com", "Phone": "+56993154632"},
+	{"Id": "3", "Name": "Amazon", "Website": "www.amazom.com", "Phone": "+56993154633"}
+]

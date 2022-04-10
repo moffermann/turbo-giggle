@@ -5,11 +5,20 @@ import ACCOUNT_SELECTED_CHANNEL from '@salesforce/messageChannel/Account_Selecte
 export default class ContactList extends LightningElement {
 
 	@api selectedAccount = {Id: '', Name: ''};
+	contacts = [];
+	error;
 
 	@wire(MessageContext)
 	messageContext;
+
+
 	@wire(getContacts, { accountId: '$selectedAccount.Id' })
-	contacts
+	wiredContacts({data, error}){
+		if (data)
+			this.contacts = data;
+		else
+			this.error = error;
+	}
 
 	connectedCallback() {
 		if (!this.subscription) {

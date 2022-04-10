@@ -9,7 +9,7 @@
 				<th scope="col">Email</th>
 			</thead>
 			<tbody>
-				<template for:each={contacts.data} for:item="contact">
+				<template for:each={contacts} for:item="contact">
 					<tr class="slds-hint-parent" key={contact.Id}>
 						<td data-label="Contact Name">{contact.Name}</td>
 						<td data-label="Contact Name">{contact.Title}</td>
