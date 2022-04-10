@@ -61,7 +61,7 @@ private class WoodTypeSummarizeTest {
 		delete opportunity;	// Deleting opportunity already summarized
 		Test.stopTest();
 		account = [SELECT Id, Total_Sales_Standard_Wood__c, Total_Sales_Recycled_Wood__c FROM Account LIMIT 1];
-		System.assertEquals(1000, account.Total_Sales_Standard_Wood__c, 'Total_Sales_Standard_Wood__c was not summarized!');
+		System.assertEquals(1500, account.Total_Sales_Standard_Wood__c, 'Total_Sales_Standard_Wood__c was not summarized!');
 		System.assertEquals(0, account.Total_Sales_Recycled_Wood__c, 'Total_Sales_Recycled_Wood__c was not summarized!');
 	}
 
@@ -125,6 +125,6 @@ private class WoodTypeSummarizeTest {
 		Test.stopTest();
 		account = [SELECT Id, Total_Sales_Standard_Wood__c, Total_Sales_Recycled_Wood__c FROM Account LIMIT 1];
 		System.assertEquals(0, account.Total_Sales_Standard_Wood__c, 'Total_Sales_Standard_Wood__c was not summarized!');
-		System.assertEquals(1000, account.Total_Sales_Recycled_Wood__c, 'Total_Sales_Recycled_Wood__c was not summarized!');
+		System.assertEquals(1500, account.Total_Sales_Recycled_Wood__c, 'Total_Sales_Recycled_Wood__c was not summarized!');
 	}
 }

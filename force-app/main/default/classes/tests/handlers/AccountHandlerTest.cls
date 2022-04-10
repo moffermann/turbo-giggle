@@ -31,5 +31,5 @@ private class AccountHandlerTest {
 		Set<Id> accountIds = stub.accountIds;
 		System.assertNotEquals(null, accountIds, 'Method woodTypeSummarize was not invoked');
 		System.assert(accountIds.contains(newOpportunity.AccountId), 'AccountId was not passed');
-		}
+	}
 }

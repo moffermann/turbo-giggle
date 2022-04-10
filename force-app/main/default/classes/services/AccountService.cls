@@ -23,6 +23,6 @@ public without sharing class AccountService extends Service {
 			else if (woodType == 'Recycled')
 				account.Total_Sales_Recycled_Wood__c = totalAmount;
 		}
-								   update accountMap.values();
+		update accountMap.values();
 	}
 }

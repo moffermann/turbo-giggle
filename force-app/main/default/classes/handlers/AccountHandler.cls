@@ -35,6 +35,6 @@ public class AccountHandler extends Handler {
 
 		if (!accountIds.isEmpty()) {
 			AccountService.getInstance().woodTypeSummarize(accountIds);
-										}
+		}
 	}
 }
