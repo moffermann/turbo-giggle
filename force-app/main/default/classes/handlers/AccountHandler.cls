@@ -5,11 +5,19 @@ public class AccountHandler extends Handler {
 	}
 
 	public void woodTypeSummarize() {
-		Opportunity[] oldOpportunities = (Opportunity[])Trigger.old;
-		Map<Id, Opportunity> newOpportunityMap = (Map<Id, Opportunity>)Trigger.newMap;
-		Boolean isUpdate = Trigger.isUpdate;
-		Boolean isDelete = Trigger.isDelete;
-		woodTypeSummarize(isUpdate, isDelete, oldOpportunities, newOpportunityMap);
+		try {
+			Opportunity[] oldOpportunities = (Opportunity[])Trigger.old;
+			Map<Id, Opportunity> newOpportunityMap = (Map<Id, Opportunity>)Trigger.newMap;
+			Boolean isUpdate = Trigger.isUpdate;
+			Boolean isDelete = Trigger.isDelete;
+			woodTypeSummarize(isUpdate, isDelete, oldOpportunities, newOpportunityMap);
+		} catch (System.Dmlexception dml) {
+			Opportunity opportunity = (Opportunity) (Trigger.isDelete ? Trigger.old[0]:Trigger.new[0]);	// The index 0 isn't precise here, because the error can be thrown in other record, but this only occurs in a batch update processes. We can fix it using custom exceptions including accountId inside exception and iterate over opportunities that share the account.
+			for (Integer i=0; i < dml.getNumDml(); i++) {
+				String message = dml.getDmlMessage(i);
+				opportunity.addError('Error summarizing wood type in account. The error message is ' + message);
+			}
+		}
 	}
 
 	@TestVisible

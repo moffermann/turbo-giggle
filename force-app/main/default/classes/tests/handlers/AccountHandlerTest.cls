@@ -32,4 +32,28 @@ private class AccountHandlerTest {
 		System.assertNotEquals(null, accountIds, 'Method woodTypeSummarize was not invoked');
 		System.assert(accountIds.contains(newOpportunity.AccountId), 'AccountId was not passed');
 	}
+
+	@IsTest
+	static void woodTypeSummarizeOnExceptionTest() {
+		//Testing handler layer.
+		Boolean isUpdate = true;
+		Boolean isDelete = false;
+		ExceptionStub stub = new ExceptionStub();
+		Service.setMock(AccountService.class, stub);
+		Opportunity oldOpportunity = [SELECT Id, Wood_Type__c, Amount, StageName, AccountId, IsWon FROM Opportunity WHERE Name = 'Test Opp 1'];
+		Opportunity newOpportunity = [SELECT Id, Wood_Type__c, Amount, StageName, AccountId, IsWon FROM Opportunity WHERE Name = 'Test Opp 2'];
+		Id opportunityId = oldOpportunity.Id;
+		System.assert(newOpportunity.IsWon, 'New opportunity is not won!');
+		Opportunity[] oldOpportunities = new Opportunity[] {oldOpportunity};
+		Map<Id, Opportunity>  newOpportunityMap = new Map<Id, Opportunity> {opportunityId => newOpportunity};
+		Test.startTest();
+		Exception dml = null;
+		try {
+			AccountHandler.getInstance().woodTypeSummarize(isUpdate, isDelete, oldOpportunities, newOpportunityMap);
+		} catch (Exception e) {
+			dml = e;
+		}
+		Test.stopTest();
+		System.assertNotEquals(null, dml, 'Exception was not thrown');
+	}
 }
