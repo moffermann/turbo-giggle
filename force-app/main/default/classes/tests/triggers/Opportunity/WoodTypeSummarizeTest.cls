@@ -8,7 +8,7 @@ private class WoodTypeSummarizeTest {
 		Opportunity opportunity = new Opportunity(AccountId = account.Id, Name = 'Test Opp 1', StageName = 'Prospecting', CloseDate = Date.today(), Amount = 1000, Wood_Type__c = 'Standard');
 		insert opportunity;
 	}
-/*
+
 	@IsTest
 	static void baseStandardSummarizeTest() {
 		Account account = [SELECT Id, Total_Sales_Standard_Wood__c, Total_Sales_Recycled_Wood__c FROM Account LIMIT 1];
@@ -105,7 +105,6 @@ private class WoodTypeSummarizeTest {
 		System.assertEquals(0, account.Total_Sales_Standard_Wood__c, 'Total_Sales_Standard_Wood__c was not summarized!');
 		System.assertEquals(1500, account.Total_Sales_Recycled_Wood__c, 'Total_Sales_Recycled_Wood__c was not summarized!');
 	}
-*/
 
 	@IsTest
 	static void deleteRecycledOpportunitySummarizedTest() {

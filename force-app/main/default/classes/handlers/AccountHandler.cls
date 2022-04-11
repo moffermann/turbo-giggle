@@ -22,7 +22,7 @@ public class AccountHandler extends Handler {
 
 	@TestVisible
 	private void woodTypeSummarize(Boolean isUpdate, Boolean isDelete, Opportunity[] oldOpportunities, Map<Id, Opportunity> newOpportunityMap) {
-		if (oldOpportunities == null || newOpportunityMap == null)
+		if (oldOpportunities == null || (!isDelete && newOpportunityMap == null))
 		return;
 		Set<Id> accountIds = new Set<Id>();
 		for (Opportunity oldOpportunity : oldOpportunities) {
@@ -34,8 +34,6 @@ public class AccountHandler extends Handler {
 				continue; // Nothing to do this opportunity is currently not summarized.
 			if (!isDelete && !newOpportunity.IsWon && !oldOpportunity.IsWon)
 				continue; // Ignoring opportunities that aren't won because they should not summarized yet.
-			if (Test.isRunningTest())
-				System.assertNotEquals(oldOpportunity.StageName, newOpportunity.StageName, 'Las etapas son iguales: ' + newOpportunity.StageName);
 			if (!accountIds.contains(oldOpportunity.AccountId) && (isDelete || newOpportunity.Amount != oldOpportunity.Amount || newOpportunity.Wood_Type__c != oldOpportunity.Wood_Type__c || oldOpportunity.StageName != newOpportunity.StageName)) {
 				accountIds.add(oldOpportunity.AccountId);
 			}
